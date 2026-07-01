@@ -1,25 +1,17 @@
-name: Deploy to GitHub Pages
-
+name: Deploy
 on:
   push:
-    branches: ["master"]
-
+    branches: [master]
 permissions:
   contents: read
   pages: write
   id-token: write
-
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v6
-
-      - name: Upload Website Pages
-        uses: actions/upload-pages-artifact@v3
+      - uses: actions/checkout@v4
+      - uses: actions/upload-pages-artifact@v3
         with:
           path: '.'
-
-      - name: Deploy Live
-        uses: actions/deploy-pages@v4
+      - uses: actions/deploy-pages@v4
